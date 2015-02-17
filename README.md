@@ -5,11 +5,11 @@ URobot is a UPnP (TM) Robot Control System. It implements the server
 component that provides UPnP robot devices among available robot platforms,
 and the controller app that controls the server on an android platform.
 
-URobot server is written in C for the URobot project (see https://github.com/swkim01/urobot/server/).
+URobot server is written in C for the URobot project (see https://github.com/swkim01/urobot/tree/master/server/).
 It is designed to provide access to device/service profiles and web contents to be controlled by any other URobot controller devices.
 It should compile and run on any modern POSIX compatible system such as Linux.
 
-URobot controller is written in Java for the URobot project (see https://github.com/swkim01/urobot/controller/).
+URobot controller is written in Java for the URobot project (see https://github.com/swkim01/urobot/tree/master/controller/).
 It is designed to control robot motion by using button or joystick, monitor any sensors, and stream any camera.
 It should compile on any modern platform with installed Android SDK and run on any android-compatible devices.
 
