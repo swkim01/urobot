@@ -1,0 +1,6 @@
+#cmakedefine VERSION "@VERSION@"
+#cmakedefine PACKAGE "@PACKAGE@"
+#cmakedefine PACKAGE_NAME "@PACKAGE_NAME@"
+#cmakedefine SYSCONFDIR "@SYSCONFDIR@"
+#cmakedefine LOCALEDIR "@SYSCONFDIR@"
+#cmakedefine CONFIG_NLS ${CONFIG_NLS}

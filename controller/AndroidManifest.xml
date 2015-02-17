@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.urobot"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/appicon" android:label="@string/app_name">
+        <activity android:name=".controller.MainActivity"
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".controller.BrowseActivity"/>
+        <activity android:name=".controller.DemoActivity"/>
+        <activity android:name=".media.ContentActivity" android:label="ContentActivity" />
+        <activity android:name=".media.PlayAudioActivity"/>
+        <activity android:name=".media.PlayImageActivity"/>  
+        <activity android:name=".media.PlayVideoActivity"/>
+        <activity android:name=".controller.RobotActivity"/>
+
+        <!-- Custom AndroidUpnpServiceImpl - see the source -->
+        <service android:name=".controller.BrowserUpnpService"/>
+    </application>
+    <uses-sdk android:minSdkVersion="7" />
+    
+     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+
+</manifest> 

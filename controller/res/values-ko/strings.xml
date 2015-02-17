@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">URobot 제어기</string>
+
+    <string name="search_lan">LAN 탐색</string>
+    <string name="toggle_debug_logging">디버그 로깅 전환</string>
+
+    <string name="searching_lan">UPnP 장치를 위해 LAN 탐색 중...</string>
+    <string name="enabling_debug_logging">디버그 로깅 활성화...</string>
+    <string name="disabling_debug_logging">디버그 로깅 비활성화...</string>
+
+    <string name="registering_demo_device">UPnP 데모 장치 등록 중...</string>
+    <string name="create_demo_failed">데모 장치 생성 실패! 로그를 체크하세요!</string>
+    
+    <string name="sensor_monitoring_on">센서 켜기</string>
+    <string name="sensor_monitoring_off">센서 끄기</string>
+    <string name="view_presentation_url">서버 웹페이지</string>
+    <string name="toggle_command_method">입력 명령 방식 전환</string>
+    <string name="switching_joystick_mode">조이스틱 모드로 전환...</string>
+    <string name="switching_keybutton_mode">키버튼 모드로 전환...</string>
+</resources>

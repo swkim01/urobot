@@ -1,0 +1,84 @@
+.\"                                      -*- nroff -*-
+.\" urobot.1 - Manual page for uRobot.
+.\"
+.\" Copyright (C) 2011-2015 Seong-Woo Kim
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU Library General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License along
+.\" with this program; if not, write to the Free Software Foundation,
+.\" Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+.\"
+.TH UROBOT 1 "June 01, 2011"
+.SH NAME
+uRobot \(hy a lightweight UPnP Service Robot Server
+.SH SYNOPSIS
+.B urobot
+[\f-\-v\fR] [\f-\-n name\fR] [\f-\-i interface\fR] [\f-\-p port\fR] [\f-\-w\fR] [\f-\-c directory\fR] [[\f-\-c directory\fR]...]
+.SH DESCRIPTION
+\fBuRobot\fP is a free Home Service Robot Server.
+It implements the server component that provides UPnP robot devices with
+information on available multimedia files. uRobot uses the built-in http
+server of libupnp to stream the files to clients.
+
+.SH OPTIONS
+This program follow the usual GNU command line syntax.
+.TP
+\fB\-\-name (\-n)\fR \fINAME\fR
+Set UPnP Friendly Name (display name of the media server).
+Default is 'uRobot'.
+.TP
+\fB\-\-interface (\-i)\fR \fIINTERFACE\fR
+Set Network interface to listen on.
+Default is 'uRobot'.
+.TP
+\fB\-\-cfg (\-f)\fR \fIFILE\fR
+Config file to be used.
+.TP
+\fB\-\-port (\-p)\fR \fIPORT\fR
+Set Network port to listen on.
+Default is random above 49152.
+.TP
+\fB\-\-content (\-c)\fR \fIDIRECTORY\fR
+Set directory to scan for multimedia files.
+.TP
+\fB\-\-no\-web (\-w)\fR
+Disable the control web page (enabled by default).
+.TP
+\fB\-\-verbose (\-v)\fR
+Set verbose display.
+.TP
+\fB\-\-daemon (\-D)\fR
+Run as a daemon.
+.TP
+\fB\-\-version (\-V)\fR
+Display uRobot version number.
+.TP
+\fB\-\-help (\-h)\fR
+Display help message.
+.SH "REMOTE CONTROL"
+You can also perform remote control of uRobot UPnP Media Server through its
+web interface. This let you define new content locations at runtime or
+update the currently shared one in case the filesystem has changed.
+To disable this feature, use the \-\-no\-web option (see bellow).
+.TP
+Just go to :
+.TP
+.B   http://ip_address:port/web/urobot.html
+.SH "REPORTING BUGS"
+Report bugs to <\fIswkim01@gmail.com\fP>.
+.SH AUTHOR
+uRobot was written by Seong-Woo Kim <swkim01@gmail.com>.
+.SH COPYRIGHT
+Copyright \(co 2011-2015 Seong-Woo Kim
+
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

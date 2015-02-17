@@ -1,0 +1,10 @@
+2015-02-16  Seong-Woo Kim  <swkim01@gmail.com>
+
+	* Second public release (Version 1.1.0)
+	* raspberrypi driver added
+	* joystick function added with ctemplate
+	* kobuki and kinect driver added
+
+2012-04-25  Seong-Woo Kim  <swkim01@gmail.com>
+
+	* First public release (Version 0.9.0)
