@@ -4,7 +4,7 @@ URobot Server - Introduction
 URobot Server is a UPnP (TM) Robot Control Server. It implements the server
 component that provides UPnP robot devices on available robot platforms.
 
-URobot server is written in C for the URobot project (see https://github.com/swkim01/urobot/server/).
+URobot server is written in C for the URobot project.
 It is designed to provide access to device/service profiles and web contents to be controlled by any other URobot controller devices.
 It should compile and run on any modern POSIX compatible system such as Linux.
 
@@ -27,22 +27,22 @@ The following programs are required to build URobot Server:
  * cmake, 2.8.0 or later.
 
    cmake is a build tool.
-
+````
    sudo apt-get install cmake
-
+````
  * Linux SDK for UPnP Devices (libupnp), 1.4.2 or later
 
    The libupnp library is used to communicate using the UPnP protocol.
    libupnp can be downloaded from http://pupnp.sourceforge.net/.
-
+````
    sudo apt-get install libupnp-dev
-
+````
  * libctemplate, 1.0 or later
 
    The libctemplate library is used to provide HTML web contents.
-
+````
    sudo apt-get install libctemplate-dev
-
+````
 The following software is required to build and run on Kobuki robot :
 
  * kobuki-core, 1.0 or later
@@ -73,7 +73,7 @@ linux with uvc cam, raspberrypi with picam, turtlebot from willowgarage co.,
 and kobuki from Yujin Robotics co.. Thus, you can select the name of <target> as linux, raspberrypi, turtlebot, or kobuki.
 
 Example on linux or raspberrypi :
-
+````
 $ sudo apt-get install cmake libupnp-dev libctemplate-dev
 $ git clone https://github.com/swkim01/urobot.git
 $ cd urobot/server
@@ -81,15 +81,15 @@ $ mkdir build; cd build
 $ cmake ..
 $ make
 $ sudo make install
-
+````
 If you want to build URobot server for kobuki robot and kinect device,
 you have to install kobuki-core package, sensorKinect driver, OpenNI library,
 and dependent packages.
 
 If you want to install URobot servers on your system, run :
-
+````
 $ sudo make install
-
+````
 This will copy the executables into their appropriate directories
 (/usr/local/bin in this example).
 
@@ -98,7 +98,7 @@ Usage
 
 URobot runs from the console only. It supports the usual --help option
 which displays usage and option information.
-
+````
 Usage: urobot-<target> [-n name] [-i interface] [-p port] [-f cfg_file] [-w] [-D]
 Options:
  -n, --name=NAME        Set UPnP Friendly Name (default is 'URobot')
@@ -110,12 +110,12 @@ Options:
  -D, --daemon           Run as a daemon.
  -V, --version          Display the version of URobot and exit
  -h, --help             Display this help
-
+````
 URobot gets its configuration from the /etc/urobot.conf file.
 You can force configuration options through command line.
-
+````
    urobot-<target> -f urobot.conf
-
+````
 You can also perform remote control of URobot UPnP Server through its
 web interface. This let you define new content locations at runtime or
 update the currently shared one in case the filesystem has changed.
