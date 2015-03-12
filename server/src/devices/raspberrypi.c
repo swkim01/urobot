@@ -40,7 +40,7 @@ SOFTWARE.
 
 #define RASPBERRYPI_NAME "RaspberryPi Actuator"
 
-#define BCM2708_PERI_BASE   0x20000000
+static volatile unsigned int BCM2708_PERI_BASE = 0x20000000; // variable for Pi2
 #define GPIO_BASE           (BCM2708_PERI_BASE + 0x200000)
 #define FSEL_OFFSET         0   // 0x0000
 #define SET_OFFSET          7   // 0x001c / 4
@@ -80,8 +80,32 @@ void short_wait(void)
 
 int setup(void)
 {
+    FILE *cpuFd;
+    char line[120];
     int mem_fd;
     uint8_t *gpio_mem;
+
+    if ((cpuFd = fopen ("/proc/cpuinfo", "r")) == NULL)
+        return SETUP_HARDWARE_FAIL;
+
+    // Start by looking for the Architecture, then we can look for a B2 revision....
+    while (fgets (line, 120, cpuFd) != NULL)
+        if (strncmp (line, "Hardware", 8) == 0)
+            break ;
+
+    if (strncmp (line, "Hardware", 8) != 0) {
+        fclose (cpuFd);
+        return SETUP_HARDWARE_FAIL;
+    }
+
+    // See if it's BCM2708 or BCM2709
+    if (strstr (line, "BCM2709") != NULL) {
+        BCM2708_PERI_BASE = 0x3F000000 ; // Pi2
+    } else if (strstr (line, "BCM2708") == NULL) {
+        fclose (cpuFd);
+        return SETUP_HARDWARE_FAIL;
+    }
+    fclose (cpuFd);
 
     if ((mem_fd = open("/dev/mem", O_RDWR|O_SYNC) ) < 0)
     {
@@ -572,7 +596,10 @@ int raspberrypi_init(device_argument *args, int id)
     }
     DBG("input id: %d\n", id);
 
-    setup();
+    if (setup() != SETUP_OK) {
+        DBG("Unable to recognize hardware\n");
+        exit(EXIT_FAILURE);
+    };
     set_function(L1, OUTPUT, PUD_OFF);
     set_function(LS, PWM, PUD_OFF);
     set_function(R1, OUTPUT, PUD_OFF);
