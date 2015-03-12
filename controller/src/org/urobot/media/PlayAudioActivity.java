@@ -39,7 +39,7 @@ public class PlayAudioActivity extends Activity {
 		if (mPlayList == null || mCurrentIndex < 0
 				|| mCurrentIndex >= mPlayList.size()) {
 
-			Toast.makeText(this, "재생할 파일이 없습니다.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.no_more_file_for_playing, Toast.LENGTH_LONG).show();
 			finish();
 			return;
 		}
@@ -47,7 +47,7 @@ public class PlayAudioActivity extends Activity {
 		String uri = mPlayList.get(mCurrentIndex);
 		mPlayer = new MediaPlayer();
 
-		// 버튼들의 클릭 리스너 등록
+		// Register Button Click Listeners
 		mFileName = (TextView)findViewById(R.id.filename);
 		mPlayBtn = (ImageButton)findViewById(R.id.play);
 		mPlayBtn.setOnClickListener(mClickPlay);
@@ -55,31 +55,31 @@ public class PlayAudioActivity extends Activity {
 		findViewById(R.id.prev).setOnClickListener(mClickPrevNext);
 		findViewById(R.id.next).setOnClickListener(mClickPrevNext);
 		
-		// 완료 리스너, 시크바 변경 리스너 등록
+		// Register CompletionListener, SeekCompleteListener, and SeekChangeListener
 		mPlayer.setOnCompletionListener(mOnComplete);
 		mPlayer.setOnSeekCompleteListener(mOnSeekComplete);
 		mProgress = (SeekBar)findViewById(R.id.progress);
 		mProgress.setOnSeekBarChangeListener(mOnSeek);
 		mProgressHandler.sendEmptyMessageDelayed(0,200);
 		
-		// 첫 곡 읽기 및 준비
+		// ready for first song
 		if (LoadMedia(mCurrentIndex) == false) {
-			Toast.makeText(this, "파일을 읽을 수 없습니다.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.cannot_read_file, Toast.LENGTH_LONG).show();
 			finish();
 		}
 	}
 
-	// 액티비티 종료시 재생 강제 종료
+	// finish playing when activity is finished
 	public void onDestroy() {
-        super.onDestroy();
-        if (mPlayer != null) {
-        	mPlayer.release();
-        	mPlayer = null;
-        }
-    }
+		super.onDestroy();
+		if (mPlayer != null) {
+			mPlayer.release();
+			mPlayer = null;
+		}
+	}
 
-    // 항상 준비 상태여야 한다.
-    boolean LoadMedia(int idx) {
+	// LoadMedia
+	boolean LoadMedia(int idx) {
 		try {
 			mPlayer.setDataSource(mUriList.get(idx));
 		} catch (IllegalArgumentException e) {
@@ -106,10 +106,10 @@ public class PlayAudioActivity extends Activity {
 			return false;
 		}
 		return true;
-    }
+	}
 
-    // 재생 및 일시 정지
-    Button.OnClickListener mClickPlay = new View.OnClickListener() {
+	// Play and Pause
+	Button.OnClickListener mClickPlay = new View.OnClickListener() {
 		public void onClick(View v) {
 			if (mPlayer.isPlaying() == false) {
 				mPlayer.start();
@@ -121,17 +121,17 @@ public class PlayAudioActivity extends Activity {
 		}
 	};
 
-	// 재생 정지. 재시작을 위해 미리 준비해 놓는다.
-    Button.OnClickListener mClickStop = new View.OnClickListener() {
+	// Stop. ready for restart.
+	Button.OnClickListener mClickStop = new View.OnClickListener() {
 		public void onClick(View v) {
 			mPlayer.stop();
 			mPlayBtn.setImageResource(android.R.drawable.ic_media_play);		
 			mProgress.setProgress(0);
 			Prepare();
 		}
-    };
-    
-    Button.OnClickListener mClickPrevNext = new View.OnClickListener() {
+	};
+	
+	Button.OnClickListener mClickPrevNext = new View.OnClickListener() {
 		public void onClick(View v) {
 			boolean wasPlaying = mPlayer.isPlaying();
 			
@@ -144,43 +144,43 @@ public class PlayAudioActivity extends Activity {
 			mPlayer.reset();
 			LoadMedia(mCurrentIndex);
 
-			// 이전에 재생중이었으면 다음 곡 바로 재생
+			// play next song
 			if (wasPlaying) {
 				mPlayer.start();
 				mPlayBtn.setImageResource(android.R.drawable.ic_media_pause);		
 			}
 		}
-    };
+	};
 
-    // 재생 완료되면 다음곡으로
-    MediaPlayer.OnCompletionListener mOnComplete = new MediaPlayer.OnCompletionListener() {
+	// next song when playing finished
+	MediaPlayer.OnCompletionListener mOnComplete = new MediaPlayer.OnCompletionListener() {
 		public void onCompletion(MediaPlayer arg0) {
 			mCurrentIndex = (mCurrentIndex == mPlayList.size() - 1 ? 0 : mCurrentIndex + 1);
 			mPlayer.reset();
 			LoadMedia(mCurrentIndex);
 			mPlayer.start();
 		}
-    };
+	};
 
-    // 에러 발생시 메시지 출력
-    MediaPlayer.OnErrorListener mOnError = new MediaPlayer.OnErrorListener() {
+	// output message on error
+	MediaPlayer.OnErrorListener mOnError = new MediaPlayer.OnErrorListener() {
 		public boolean onError(MediaPlayer mp, int what, int extra) {
 			String err = "OnError occured. what = " + what + " ,extra = " + extra;
 			Toast.makeText(PlayAudioActivity.this, err, Toast.LENGTH_LONG).show();
 			return false;
 		}
-    };
+	};
 
-    // 위치 이동 완료 처리
-    MediaPlayer.OnSeekCompleteListener mOnSeekComplete = new MediaPlayer.OnSeekCompleteListener() {
+	// process seek completed
+	MediaPlayer.OnSeekCompleteListener mOnSeekComplete = new MediaPlayer.OnSeekCompleteListener() {
 		public void onSeekComplete(MediaPlayer mp) {
 			if (wasPlaying) {
 				mPlayer.start();
 			}
 		}
-    };
+	};
 
-    // 0.2초에 한번꼴로 재생 위치 갱신
+	// update playing position in 0.2 sec interval
 	Handler mProgressHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			if (mPlayer == null) return;
@@ -191,7 +191,7 @@ public class PlayAudioActivity extends Activity {
 		}
 	};
 
-	// 재생 위치 이동
+	// move playing position
 	SeekBar.OnSeekBarChangeListener mOnSeek = new SeekBar.OnSeekBarChangeListener() {
 		public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 			if (fromUser) {
@@ -210,4 +210,3 @@ public class PlayAudioActivity extends Activity {
 		}
 	};
 }
-

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">URobot Controller</string>
+    
+    <string name="browse_lan_tab">Browse LAN</string>
+    <string name="demo_light_tab">Demo Light</string>
 
     <string name="search_lan">Search LAN</string>
     <string name="toggle_debug_logging">Toggle debug logging</string>
@@ -18,4 +21,45 @@
     <string name="toggle_command_method">Toggle input command method</string>
     <string name="switching_joystick_mode">Switching to joystick mode...</string>
     <string name="switching_keybutton_mode">Switching to keybutton mode...</string>
+    
+    <string name="command_argument">Command</string>
+    <string name="status_argument">Status</string>
+    <string name="voice_recognizer_prompt">Robot Motion: Go, Back, Left, Right, Stop</string>
+    <string name="go_forward_prompt">Go</string>
+    <string name="go_forward_command">GoForward</string>
+    <string name="go_backward_prompt">Back</string>
+    <string name="go_backward_command">GoBackward</string>
+    <string name="turn_left_prompt">Left</string>
+    <string name="turn_left_command">TurnLeft</string>
+    <string name="turn_right_prompt">Right</string>
+    <string name="turn_right_command">TurnRight</string>
+    <string name="stop_prompt">Stop</string>
+    <string name="stop_command">Stop</string>
+    <string name="move_command">Move</string>
+    <string name="velocity_argument">Velocity</string>
+    <string name="angular_argument">Angular</string>
+    
+    <string name="set_front_light_command">SetFrontLight</string>
+    <string name="set_fog_light_command">SetFogLight</string>
+    <string name="set_break_light_command">SetBreakLight</string>
+    <string name="set_wink_light_command">SetWinkLight</string>
+    
+    <string name="front_distance_state">FrontDistance</string>
+    <string name="back_distance_state">BackDistance</string>
+    <string name="left_distance_state">LeftDistance</string>
+    <string name="right_distance_state">RightDistance</string>
+    <string name="accelerator_x_state">AcceleratorX</string>
+    <string name="accelerator_y_state">AcceleratorY</string>
+    <string name="accelerator_z_state">AcceleratorZ</string>
+    
+    <string name="get_video_url_command">GetVideoURL</string>
+    <string name="camera_index_argument">CameraIndex</string>
+    <string name="camera_type_argument">CameraType</string>
+    <string name="object_id_argument">ObjectID</string>
+    <string name="video_url_state">VideoURL</string>
+    
+    <string name="no_more_file_for_playing">No more file for playing.</string>
+    <string name="cannot_read_file">Cannot read file.</string>
+    <string name="no_more_file_for_viewing">No more file for viewing.</string>
+        
 </resources>

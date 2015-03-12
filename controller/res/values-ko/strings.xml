@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">URobot 제어기</string>
+    
+    <string name="browse_lan_tab">LAN 검색</string>
+    <string name="demo_light_tab">전구 데모</string>
 
     <string name="search_lan">LAN 탐색</string>
     <string name="toggle_debug_logging">디버그 로깅 전환</string>
@@ -18,4 +21,16 @@
     <string name="toggle_command_method">입력 명령 방식 전환</string>
     <string name="switching_joystick_mode">조이스틱 모드로 전환...</string>
     <string name="switching_keybutton_mode">키버튼 모드로 전환...</string>
+    
+    <string name="voice_recognizer_prompt">로봇 이동: 전진, 후진, 왼쪽, 오른쪽, 정지</string>
+    <string name="go_forward_prompt">전진</string>
+    <string name="go_backward_prompt">후진</string>
+    <string name="turn_left_prompt">왼쪽</string>
+    <string name="turn_right_prompt">오른쪽</string>
+    <string name="stop_prompt">정지</string>
+    
+    <string name="no_more_file_for_playing">재생할 파일이 없습니다.</string>
+    <string name="cannot_read_file">파일을 읽을 수 없습니다.</string>
+    <string name="no_more_file_for_viewing">보여줄 파일이 없습니다.</string>
+    
 </resources>

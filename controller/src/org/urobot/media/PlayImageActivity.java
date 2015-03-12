@@ -69,7 +69,7 @@ public class PlayImageActivity extends Activity implements ViewSwitcher.ViewFact
 		if (mImageList == null || mCurrentIndex < 0
 				|| mCurrentIndex >= mImageList.size()) {
 			
-			Toast.makeText(this, "보여줄 파일이 없습니다.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.no_more_file_for_viewing, Toast.LENGTH_LONG).show();
 			finish();
 			return;
 		}
@@ -81,14 +81,14 @@ public class PlayImageActivity extends Activity implements ViewSwitcher.ViewFact
 		mSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
 				android.R.anim.fade_out));
 		
-		// 버튼들의 클릭 리스너 등록
+		// Register Button Click Listeners
 		mFileName = (TextView)findViewById(R.id.image_filename);
 		findViewById(R.id.image_prev).setOnClickListener(mClickPrevNext);
 		findViewById(R.id.image_next).setOnClickListener(mClickPrevNext);
 		
-		// 첫 곡 읽기 및 준비
+		// ready for first image
 		if (LoadMedia(mCurrentIndex) == false) {
-			Toast.makeText(this, "파일을 읽을 수 없습니다.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.cannot_read_file, Toast.LENGTH_LONG).show();
 			finish();
 		}
 	}
@@ -113,7 +113,7 @@ public class PlayImageActivity extends Activity implements ViewSwitcher.ViewFact
 		System.gc();
 	}
 	
-	// 항상 준비 상태여야 한다.
+	// LoadMedia
 	boolean LoadMedia(int idx) {
 		//Uri uri = Uri.parse(mUriList.get(idx));
 		//mSwitcher.setImageURI(uri);
@@ -160,7 +160,7 @@ public class PlayImageActivity extends Activity implements ViewSwitcher.ViewFact
 				bm = BitmapFactory.decodeStream(bis);
 			bis.close();
 			is.close();
-			// Drawable 객체 생성
+			// generate Drawable object
 			final Drawable image = new BitmapDrawable(bm);
 			mSwitcher.setImageDrawable(image);
 		} catch (IOException e) {

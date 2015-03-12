@@ -78,13 +78,13 @@ public class MainActivity extends TabActivity {
 
         intent = new Intent().setClass(this, BrowseActivity.class);
         spec = tabHost.newTabSpec("browse")
-                .setIndicator("Browse LAN", getResources().getDrawable(R.drawable.ic_tab_browse))
+                .setIndicator(getResources().getText(R.string.browse_lan_tab), getResources().getDrawable(R.drawable.ic_tab_browse))
                 .setContent(intent);
         tabHost.addTab(spec);
 
         intent = new Intent().setClass(this, DemoActivity.class);
         spec = tabHost.newTabSpec("demo")
-                .setIndicator("Demo Light", getResources().getDrawable(R.drawable.ic_tab_demo))
+                .setIndicator(getResources().getText(R.string.demo_light_tab), getResources().getDrawable(R.drawable.ic_tab_demo))
                 .setContent(intent);
         tabHost.addTab(spec);
 

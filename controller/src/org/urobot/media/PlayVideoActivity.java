@@ -59,7 +59,7 @@ public class PlayVideoActivity extends Activity /*implements OnTouchListener*/ {
 		if (mPlayList == null || mCurrentIndex < 0
 				|| mCurrentIndex >= mPlayList.size()) {
 
-			Toast.makeText(this, "재생할 파일이 없습니다.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.no_more_file_for_playing, Toast.LENGTH_LONG).show();
 			finish();
 			return;
 		}

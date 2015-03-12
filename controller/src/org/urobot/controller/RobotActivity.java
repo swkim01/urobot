@@ -219,6 +219,7 @@ public class RobotActivity extends Activity {
 		FrontLight.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				doSetLightAction("SetFrontLight", 1);
+				
 				if(!statusFrontLight){
 					FrontLight.setImageResource(R.drawable.btn_front_light1);
 					statusFrontLight = true;
@@ -360,19 +361,13 @@ public class RobotActivity extends Activity {
 		@Override
 		public void OnMoved(float radial, float angle) {
 			doMoveAction("Move", radial, angle);
-			//txtX.setText(Integer.toString(pan));
-			//txtY.setText(Integer.toString(tilt));
 		}
 		
 		@Override
 		public void OnReleased() {
-			//txtX.setText("released");
-			//txtY.setText("released");
 		}
 		
 		public void OnReturnedToCenter() {
-			//txtX.setText("stopped");
-			//txtY.setText("stopped");
 		};
 	};
 	
@@ -677,7 +672,7 @@ public class RobotActivity extends Activity {
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
 				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-		intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "로봇 이동: 전진, 후진, 왼쪽, 오른쪽, 후진");
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getText(R.string.voice_recognizer_prompt));
 		startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
 	}
 	
@@ -691,23 +686,23 @@ public class RobotActivity extends Activity {
 			ArrayList<String> matches = data.getStringArrayListExtra(
 					RecognizerIntent.EXTRA_RESULTS);
 			for (String str : matches) {
-				if (str.matches("전진")) {
+				if (str.matches(getString(R.string.go_forward_prompt))) {
 					doMotionAction("GoForward", 1);
 					break;
 				}
-				else if (str.matches("후진")) {
+				else if (str.matches(getString(R.string.go_backward_prompt))) {
 					doMotionAction("GoBackward", 1);
 					break;
 				}
-				else if (str.matches("왼쪽")) {
+				else if (str.matches(getString(R.string.turn_left_prompt))) {
 					doMotionAction("TurnLeft", 1);
 					break;
 				}
-				else if (str.matches("오른쪽")) {
+				else if (str.matches(getString(R.string.turn_right_prompt))) {
 					doMotionAction("TurnRight", 1);
 					break;
 				}
-				else if (str.matches("정지")) {
+				else if (str.matches(getString(R.string.stop_prompt))) {
 					doMotionAction("Stop", 1);
 					break;
 				}
