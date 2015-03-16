@@ -33,7 +33,7 @@ main (int argc, char **argv)
   struct service_t *mcs, *cams, *sts;
   char *args[3] = {
      "",
-     "--resolution 640x480 --fps 30 --device /dev/video0",
+     "--resolution 640x480 -y --fps 30 --device /dev/video0",
      "--port 8080"
     };
 
