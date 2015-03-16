@@ -331,8 +331,8 @@
 "    joystick._stickEl.style.left = (joystick._stickX - joystick._stickEl.width /2)+\"px\";\n" \
 "    joystick._stickEl.style.top  = (joystick._stickY - joystick._stickEl.height/2)+\"px\";\n" \
 "    joystick.sendMoveCommand(false);\n" \
-"    if (joystick._count != 0) \n" \
-"        setTimeout(function(){returnToCenter();}, 100);\n" \
+"    //if (joystick._count != 0) \n" \
+"    //    setTimeout(function(){returnToCenter();}, 100);\n" \
 "}\n"
 /*
 "    var x = event.clientX - this._offsetX + document.body.scrollLeft;\n" \
