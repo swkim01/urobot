@@ -55,7 +55,7 @@ main (int argc, char **argv)
   struct service_t *mcs, *sms, *cams, *sts;
   char *args[3] = {
      "",
-     "--resolution 640x480 --fps 30 --device /dev/video0",
+     "--resolution 640x480 -y --fps 30 --device /dev/video0",
      "--port 8080"
     };
 
@@ -66,10 +66,8 @@ main (int argc, char **argv)
                           car_stop,
                           car_run,
                           car_cmd);
-  printf("bbb\n");
   mcs = urobot_service_add(car, MCS_SERVICE_ID, MCS_SERVICE_TYPE,
                            mcs_service_actions, 0, 0, 0, mcs_init);
-  printf("ccc\n");
   for (i=0; i<7; i++) {
     sms_variables[i] = sms_variablevalues[i];
     strcpy(sms_variablevalues[i], sms_defaultvalues[i]);
@@ -80,7 +78,6 @@ main (int argc, char **argv)
                            sms_variables, 7, sms_init);
   register_service_callback(sms, update_sensors);
 
-  printf("ddd\n");
   cam = urobot_device_add(ut, UVC_DEVICE_TYPE, "Camera",
                           uvc_init,
                           uvc_stop,
@@ -97,7 +94,6 @@ main (int argc, char **argv)
   sts = urobot_service_add(streamer, STS_SERVICE_ID, STS_SERVICE_TYPE,
                            sts_service_actions, 0, 0, 0, sts_init);
 
-  printf("eee\n");
   init_devices(ut, 3, args
     //{"",
     // "--resolution 640x480 --fps 30 --device /dev/video0",
@@ -105,7 +101,6 @@ main (int argc, char **argv)
     //}
   );
 
-  printf("fff\n");
   if (urobot_run(ut) != EXIT_SUCCESS)
     {
       return EXIT_FAILURE;

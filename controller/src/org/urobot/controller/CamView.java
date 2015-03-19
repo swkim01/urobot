@@ -144,7 +144,7 @@ public class CamView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
  
-    private void init(Context context) {
+    public void init(Context context) {
         SurfaceHolder holder = getHolder();
         holder.addCallback(this);
         thread = new MultipartJpegViewThread(holder, context);
@@ -164,7 +164,7 @@ public class CamView extends SurfaceView implements SurfaceHolder.Callback {
     public void startPlayback() {
         if(mIn != null) {
             mRun = true;
-            thread.start();            
+            thread.start();
         }
     }
    
@@ -178,7 +178,7 @@ public class CamView extends SurfaceView implements SurfaceHolder.Callback {
             } catch (InterruptedException e) {}
         }
     }
- 
+    
     public CamView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);

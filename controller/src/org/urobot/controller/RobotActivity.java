@@ -200,6 +200,7 @@ public class RobotActivity extends Activity {
 					t.setGravity(CONTEXT_IGNORE_SECURITY, 530, 1);
 					t.show();
 					String url = doGetVideoURL(0, CAMERA_TYPE_STREAM, 0);
+					cam.init(getApplicationContext());
 					cam.setSource(MultipartJpegInputStream.read(url/*"http://192.168.0.5:8080/?action=stream"*/));
 					cam.setDisplayMode(CamView.SIZE_BEST_FIT);
 					cam.showFps(true);
