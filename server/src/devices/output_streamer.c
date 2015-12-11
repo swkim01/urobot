@@ -666,7 +666,6 @@ void *server_thread(void *arg)
     /* set cleanup handler to cleanup ressources */
     pthread_cleanup_push(server_cleanup, pcontext);
 
-    DBG("aaa\n");
     bzero(&hints, sizeof(hints));
     hints.ai_family = PF_UNSPEC;
     hints.ai_flags = AI_PASSIVE;
@@ -678,7 +677,6 @@ void *server_thread(void *arg)
         exit(EXIT_FAILURE);
     }
 
-    DBG("bbb\n");
     for(i = 0; i < MAX_SD_LEN; i++)
         pcontext->sd[i] = -1;
 
@@ -724,7 +722,6 @@ void *server_thread(void *arg)
         }
     }
 
-    DBG("ccc\n");
     pcontext->sd_len = i;
 
     if(pcontext->sd_len < 1) {
@@ -733,13 +730,11 @@ void *server_thread(void *arg)
         exit(EXIT_FAILURE);
     }
 
-    DBG("ddd\n");
     /* create a child for every client that connects */
     while(!ut->stop) {
         //int *pfd = (int *)malloc(sizeof(int));
         cfd *pcfd = malloc(sizeof(cfd));
 
-        DBG("eee\n");
         if(pcfd == NULL) {
             fprintf(stderr, "failed to allocate (a very small amount of) memory\n");
             exit(EXIT_FAILURE);
